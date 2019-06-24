@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://vk.com/js/api/openapi.js?161" type="text/javascript"></script>
+  <title>Webpack</title>
+<link href="{{ url_for('static', filename='Login/css/app.css') }}" rel="stylesheet"></head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<body>
+  <div class="frends-wrapper" >
+    <table class="table table-striped">
+      <h1 class="display-4 p-3">Friends {{accountInfo['first_name']}} {{accountInfo['last_name']}}</h1>  
+      <thead>      
+        <tr>
+          <th scope="col">Имя</th>
+          <th scope="col">Фамилия</th>
+        </tr>
+      </thead>
+      <tbody class=" p-6">
+        {%for friendInfo in friendsInfo%}
+          <tr>
+            <td scope="col">{{friendInfo[0]['first_name']}}</th>
+            <td scope="col">{{friendInfo[0]['last_name']}}</th>
+          </tr>
+        {% endfor %}
+      </tbody>      
+    </table>          
+        <form action="/Login" class="mx-auto mt-5" style="max-width: 250px;" >
+          <button class = "login100-form-btn" type="submit">Logout</button>
+        </form>
+      </div>
+</body>
+</html>
