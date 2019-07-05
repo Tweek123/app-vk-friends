@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="https://vk.com/js/api/openapi.js?161" type="text/javascript"></script>
   <title>Webpack</title>
 <link href="{{ url_for('static', filename='Login/css/app.css') }}" rel="stylesheet"></head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -18,13 +17,13 @@
 					</span>
 
 
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "Username is required">
+					<div class="wrap-input100 validate-input m-b-16" style="display: none;" data-validate = "Username is required">
 						<input id = "login" class="input100" type="text" name="username" placeholder="Username">
 						<span class="focus-input100"></span>
 					</div>
 					
 					
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
+					<div class="wrap-input100 validate-input m-b-16" style="display: none;" data-validate = "Password is required">
 						<input id = "password" class="input100" type="password" name="pass" placeholder="Password">
 						<span class="focus-input100"></span>
 					</div>
@@ -40,5 +39,19 @@
 		</div>
 	</div>
 </body>
-</body>
+<script>
+	  window.onload = function() {
+				let cookies = document.cookie.split(';')
+				let vk_session  = cookies[cookies.length-1].split('vk_session=')[1];
+
+				$.ajax({
+					data : {
+						vk_session : vk_session
+					},
+					type : 'POST',
+					url : '/Login'
+				})
+
+  };
+</script>
 </html>

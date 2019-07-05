@@ -21,8 +21,8 @@
       <tbody class=" p-6">
         {%for friendInfo in friendsInfo%}
           <tr>
-            <td scope="col">{{friendInfo[0]['first_name']}}</th>
-            <td scope="col">{{friendInfo[0]['last_name']}}</th>
+            <td scope="col">{{friendInfo['first_name']}}</th>
+            <td scope="col">{{friendInfo['last_name']}}</th>
           </tr>
         {% endfor %}
       </tbody>      
@@ -32,4 +32,16 @@
         </form>
       </div>
 </body>
+<script>
+	  window.onload = function() {
+
+				$.ajax({
+					type : 'POST',
+					url : '/Friends'
+				}).done(function (data) {
+            document.cookie = "vk_session="+JSON.stringify(data);
+        });
+
+  };
+</script>
 </html>
